@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify
 from flask_sqlalchemy import SQLAlchemy
-import shutil
+import shutil, json
 
 app = Flask(__name__)
 
@@ -61,10 +61,10 @@ def freedisk():
 def writedisk():
     try:
         x = []
-        for i in 20000:
+        for i in range(20000):
             x.append(i)
         with open("./asdf.txt", "a") as f:
-            f.write("x")
+            f.write(json.dumps({"x": x}))
         return jsonify({"status": "ok"})
     except Exception as e:
         return jsonify({"status": str(e)})
