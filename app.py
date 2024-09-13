@@ -63,6 +63,8 @@ def writedisk():
         x = []
         for i in 20000:
             x.append(i)
+        with open("./asdf.txt", "a") as f:
+            f.write("x")
         return jsonify({"status": "ok"})
     except Exception as e:
         return jsonify({"status": str(e)})
